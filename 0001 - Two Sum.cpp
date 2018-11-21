@@ -8,8 +8,8 @@ public:
         for(int i=0;i<nums.size();i++){
             temp = target-nums[i];
             if(mp.count(temp)){
-                rv.push_back(i);
                 rv.push_back(mp[temp]);
+				rv.push_back(i);
                 return rv;
             }
             mp[nums[i]] = i;
