@@ -3,38 +3,59 @@
  * struct ListNode {
  *     int val;
  *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution {
+class Solution 
+{
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode *rv = new ListNode(0);
-        ListNode *current = rv;
-        int carry = 0, temp=0;
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) 
+    {
+        ListNode *ans = NULL, *it = NULL;
+        int carry = 0;
         
-        for(;l1 || l2;){
-            if(l1 && l2){
-                carry = temp = l1->val + l2->val + carry;
-                current->next = new ListNode(temp%10);
+        while(l1 || l2)
+        {
+            ListNode* newNode = new ListNode(carry);
+            if(l1)
+            {
+                newNode->val += l1->val;
                 l1 = l1->next;
-                l2 = l2->next;
-            }else if(l1){
-                carry = temp = l1->val + carry;
-                current->next = new ListNode(temp%10);
-                l1 = l1->next;
-            }else if(l2){
-                carry = temp = l2->val + carry;
-                current->next = new ListNode(temp%10);
+            }
+            if(l2)
+            {
+                newNode->val += l2->val;
                 l2 = l2->next;
             }
-            carry /= 10;
-            
-            current = current->next;
+            carry = newNode->val / 10;
+            newNode->val %= 10;
+            if(!it)
+            {
+                it = newNode;
+                ans = it;
+            }
+            else
+            {
+                it->next = newNode;
+                it = it->next;
+            }
         }
         if(carry)
-            current->next = new ListNode(carry);
+        {
+            if(!it)
+            {
+                it = new ListNode(carry);
+                ans = it;
+            }
+            else
+            {
+                it->next = new ListNode(carry);
+                it = it->next;
+            }
+        }
         
-        return rv->next;
+        return ans;
     }
 };
