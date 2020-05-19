@@ -1,23 +1,30 @@
-class Solution {
+class Solution 
+{
 public:
-    int lengthOfLongestSubstring(string s) {
-        int rv = 0;
+    int lengthOfLongestSubstring(string s) 
+    {
+        int ans = 0;
+        int len = (int)s.length();
         int mp[256];
-        memset(mp, -1, sizeof(mp));
         
-        for(int i=0,j=0; i<s.length(),j<s.length();){
-            if(mp[s[j]] == -1){
-                mp[s[j]] = j;
-                rv = max(rv, j-i+1);
-            }else{
-                for(int k=i;k<mp[s[j]];k++){
+        memset(mp, -1, sizeof(mp));
+        for(int L = 0, R = 0; L < len && R < len; R++)
+        {
+            if(mp[s[R]] == -1)
+            {
+                mp[s[R]] = R;
+                ans = max(ans, R - L + 1);
+            }
+            else
+            {
+                for(int k = L; k < mp[s[R]]; k++)
+                {
                     mp[s[k]] = -1;
                 }
-                i = mp[s[j]]+1;
-                mp[s[j]] = j;
+                L = mp[s[R]] + 1;
+                mp[s[R]] = R;
             }
-            j++;
         }
-        return rv;
+        return ans;
     }
 };
