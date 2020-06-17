@@ -4,10 +4,8 @@ public:
         int left = 0;
         int right = 0;
         
-        for(int i = 0; i < (int)nums.size(); i++)
-        {
-            right += nums[i];
-        }
+        for(auto &x:nums)
+            right += x;
         
         for(int i = 0; i < (int)nums.size(); i++)
         {
