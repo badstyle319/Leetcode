@@ -1,8 +1,7 @@
 class Solution {
 public:
-    string reverseString(string s) {
-        for(int i=0,j=s.length()-1;i<j;i++,j--)
-            swap(s[i], s[j]);
-        return s;
+    void reverseString(vector<char>& s) {
+        for(int L = 0, R = (int)s.size()-1; L < R; L++, R--)
+            swap(s[L], s[R]);
     }
 };
