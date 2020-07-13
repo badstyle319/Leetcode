@@ -10,29 +10,22 @@
  * };
  */
 class Solution {
+    void traverse(TreeNode* root, vector<vector<int>> &v, int level)
+    {
+        if(!root)
+            return;
+        
+        if(v.size() == level)
+            v.push_back(vector<int>());
+        v[level].push_back(root->val);
+        traverse(root->left, v, level+1);
+        traverse(root->right, v, level+1);
+    }
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
         vector<vector<int>> v;
         
-        if(!root)
-            return v;
-        
-        v.push_back(vector<int>(1, root->val));
-        auto left = levelOrder(root->left);
-        auto right = levelOrder(root->right);
-        vector<int> merge;
-        int i;
-        for(i = 0; i < left.size() && i < right.size(); i++)
-        {
-            vector<int> merge;
-            merge.insert(merge.end(), left[i].begin(), left[i].end());
-            merge.insert(merge.end(), right[i].begin(), right[i].end());
-            v.push_back(merge);
-        }
-        for(; i < left.size(); i++)
-            v.push_back(left[i]);
-        for(; i < right.size(); i++)
-            v.push_back(right[i]);
+        traverse(root, v, 0);
         
         return v;
     }

@@ -10,18 +10,21 @@
  * };
  */
 class Solution {
+    void traverse(TreeNode* root, vector<int> &v)
+    {
+        if(!root)
+            return;
+        
+        v.push_back(root->val);
+        traverse(root->left, v);
+        traverse(root->right, v);
+    }
+    
 public:
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int> v;
         
-        if(!root)
-            return v;
-        
-        v.push_back(root->val);
-        auto L = preorderTraversal(root->left);
-        auto R = preorderTraversal(root->right);
-        v.insert(v.end(), L.begin(), L.end());
-        v.insert(v.end(), R.begin(), R.end());
+        traverse(root, v);
         
         return v;
     }

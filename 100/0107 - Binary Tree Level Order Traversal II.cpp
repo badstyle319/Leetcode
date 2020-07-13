@@ -12,7 +12,7 @@ class Solution {
         if(!root)
             return;
         
-        if(ans.size()==level)
+        if(ans.size() == level)
             ans.insert(ans.begin(), vector<int>());
         ans[ans.size()-level-1].push_back(root->val);
         traverse(root->left, ans, level+1);
@@ -21,7 +21,9 @@ class Solution {
 public:
     vector<vector<int>> levelOrderBottom(TreeNode* root) {
         vector<vector<int>> ans;
+        
         traverse(root, ans, 0);
+        
         return ans;
     }
 };

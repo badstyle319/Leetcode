@@ -10,18 +10,21 @@
  * };
  */
 class Solution {
+    void traverse(TreeNode* root, vector<int> &v)
+    {
+        if(!root)
+            return;
+        
+        traverse(root->left, v);
+        v.push_back(root->val);
+        traverse(root->right, v);
+    }
+    
 public:
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> v;
         
-        if(!root)
-            return v;
-        
-        auto left = inorderTraversal(root->left);
-        v.insert(v.end(), left.begin(), left.end());
-        v.push_back(root->val);
-        auto right = inorderTraversal(root->right);
-        v.insert(v.end(), right.begin(), right.end());
+        traverse(root, v);
         
         return v;
     }
