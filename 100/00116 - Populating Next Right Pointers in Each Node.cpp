@@ -32,13 +32,33 @@ class Solution {
     }
 public:
     Node* connect(Node* root) {
-        v.clear();
+//         v.clear();
         
-        bfs(root, 0);
-        for(auto v1:v)
+//         bfs(root, 0);
+//         for(auto v1:v)
+//         {
+//             for(int i = 1; i < v1.size(); i++)
+//                 v1[i-1]->next = v1[i];
+//         }
+        if(!root)
+            return NULL;
+        
+        queue<Node*> q;
+        q.push(root);
+        while(!q.empty())
         {
-            for(int i = 1; i < v1.size(); i++)
-                v1[i-1]->next = v1[i];
+            int len = q.size();
+            for(int i = 0; i < len; i++)
+            {
+                Node* t = q.front(); q.pop();
+                if(i+1 < len)
+                    t->next = q.front();
+                if(t->left)
+                    q.push(t->left);
+                if(t->right)
+                    q.push(t->right);
+                
+            }
         }
         
         return root;
