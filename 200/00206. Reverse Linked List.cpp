@@ -3,21 +3,39 @@
  * struct ListNode {
  *     int val;
  *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        if(!head)
-            return NULL;
-            
-        if(!head->next)
+        if(!head || !head->next)
             return head;
         
-        ListNode *temp = reverseList(head->next);
+        // iterative
+//         ListNode *p = head;
+//         ListNode *q = head->next;
+//         ListNode *r = head->next->next;
+        
+//         p->next = NULL;
+//         while(r)
+//         {
+//             q->next = p;
+//             p = q;
+//             q = r;
+//             r = r->next;
+//         }
+//         q->next = p;
+        
+//         return q;
+        
+        // recursive
+        ListNode* newHead = reverseList(head->next);
         head->next->next = head;
         head->next = NULL;
-        return temp;
+        
+        return newHead;
     }
 };
