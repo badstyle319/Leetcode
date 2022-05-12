@@ -1,2 +1,2 @@
 # Leetcode
-This is my C/C++ code for solving leetcode problems.
+This is my repo for solving leetcode problems.
