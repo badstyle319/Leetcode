@@ -3,6 +3,9 @@ from unittest import TestCase
 
 
 class Solution:
+    """
+    same as question 1991. find the middle index in array
+    """
     def pivotIndex(self, nums: List[int]) -> int:
         left = 0
         right = sum(nums)
