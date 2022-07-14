@@ -1,5 +1,5 @@
+import unittest
 from typing import List
-from unittest import TestCase
 
 
 class Solution:
@@ -11,7 +11,7 @@ class Solution:
         return nums.index(maximum)
 
 
-class TestResult(TestCase):
+class TestResult(unittest.TestCase):
     def run_test(self, data, expect):
         result = Solution().dominantIndex(data)
         self.assertEqual(result, expect)
@@ -25,3 +25,7 @@ class TestResult(TestCase):
         data = [1, 2, 3, 4]
         expect = -1
         self.run_test(data, expect)
+
+
+if __name__ == "__main__":
+    unittest.main()

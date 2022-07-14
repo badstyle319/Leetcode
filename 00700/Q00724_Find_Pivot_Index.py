@@ -1,5 +1,5 @@
+import unittest
 from typing import List
-from unittest import TestCase
 
 
 class Solution:
@@ -17,7 +17,7 @@ class Solution:
         return -1
 
 
-class TestResult(TestCase):
+class TestResult(unittest.TestCase):
     def run_test(self, data, expect):
         result = Solution().pivotIndex(data)
         self.assertEqual(result, expect)
@@ -36,3 +36,7 @@ class TestResult(TestCase):
         data = [2, 1, -1]
         expect = 0
         self.run_test(data, expect)
+
+
+if __name__ == "__main__":
+    unittest.main()

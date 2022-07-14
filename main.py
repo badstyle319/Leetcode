@@ -1,12 +1,12 @@
+import unittest
 from typing import List
-from unittest import TestCase
 
 
 class Solution:
     pass
 
 
-class TestResult(TestCase):
+class TestResult(unittest.TestCase):
     def run_test(self, data, expect):
         # TODO: call function to get result
         result = Solution()
@@ -27,3 +27,7 @@ class TestResult(TestCase):
         data = []
         expect = []
         self.run_test(data, expect)
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,5 +1,5 @@
+import unittest
 from typing import List
-from unittest import TestCase
 
 
 class Solution:
@@ -12,7 +12,7 @@ class Solution:
             hashmap[num] = i
 
 
-class TestResult(TestCase):
+class TestResult(unittest.TestCase):
     def run_test(self, data, expect):
         result = Solution().twoSum(data[0], data[1])
         self.assertCountEqual(result, expect)
@@ -31,3 +31,7 @@ class TestResult(TestCase):
         data = [[3, 3], 6]
         expect = [0, 1]
         self.run_test(data, expect)
+
+
+if __name__ == "__main__":
+    unittest.main()
