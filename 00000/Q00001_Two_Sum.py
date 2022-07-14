@@ -15,7 +15,7 @@ class Solution:
 class TestResult(TestCase):
     def run_test(self, data, expect):
         result = Solution().twoSum(data[0], data[1])
-        self.assertEqual(sorted(result), sorted(expect))
+        self.assertCountEqual(result, expect)
 
     def test_case1(self):
         data = [[2, 7, 11, 15], 9]
