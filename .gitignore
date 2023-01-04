@@ -31,3 +31,4 @@
 __pycache__/
 .idea/
 .pytest_cache/
+Pipfile.lock
