@@ -15,3 +15,11 @@ def create_linked_list(data):
         cur = cur.next
 
     return head
+
+
+def dump_linked_list(head):
+    ret = []
+    while head:
+        ret.append(head.val)
+        head = head.next
+    return ret
