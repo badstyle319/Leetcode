@@ -1,5 +1,6 @@
 import unittest
 from typing import Optional
+
 from common import ListNode, create_linked_list
 
 
