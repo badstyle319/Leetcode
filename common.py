@@ -55,3 +55,23 @@ def create_binary_tree(data):
 
     return root
 
+
+def dump_binary_Tree(data):
+    if not data:
+        return []
+
+    from collections import deque
+
+    dq = deque([data])
+    res = []
+    while dq:
+        node_count = len(dq)
+        for i in range(node_count):
+            node = dq.popleft()
+            res.append(node.val)
+            if node.left:
+                dq.append(node.left)
+            if node.right:
+                dq.append(node.right)
+
+    return res
