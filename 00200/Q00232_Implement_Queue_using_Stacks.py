@@ -29,7 +29,7 @@ class TestResult(unittest.TestCase):
         for i, cmd in enumerate(data['op'][1:]):
             func = getattr(obj, cmd)
             args = data['val'][1:][i]
-            result = func(args[0]) if len(args) else func()
+            result = func(args[0]) if args else func()
             self.assertEqual(result, expect[1:][i])
 
     def test_case1(self):
