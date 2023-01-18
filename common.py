@@ -68,10 +68,10 @@ def dump_binary_Tree(data):
         node_count = len(dq)
         for i in range(node_count):
             node = dq.popleft()
-            res.append(node.val)
-            if node.left:
-                dq.append(node.left)
-            if node.right:
-                dq.append(node.right)
+            res.append(node.val if node else None)
+            dq.append(node.left if node else None)
+            dq.append(node.right if node else None)
+        while dq and not dq[-1]:
+            dq.pop()
 
     return res
